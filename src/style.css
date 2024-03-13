@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .navLink {
+    @apply flex items-center gap-2 rounded-lg px-6 py-3 text-lg  hover:bg-gray-100 aria-[current=page]:bg-gray-100 dark:hover:bg-gray-900 dark:aria-[current=page]:bg-gray-900;
+    &:hover svg {
+      @apply text-color-brand-600;
+    }
+  }
+  .buttonIcon {
+    @apply text-color-brand-600 focus:ring-color-brand-600 flex items-center rounded-md border-none p-1  text-2xl hover:bg-gray-200 focus:outline-none focus:ring-2 dark:hover:bg-gray-900;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  transition:
+    background-color 0.3s,
+    border 0.3s;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  transition:
+    color 0.3s,
+    background-color 0.3s;
+  min-height: 100vh;
+}
+
+input,
+button,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.active svg {
+  color: #4f46e5;
+}
