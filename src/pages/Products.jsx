@@ -15,7 +15,7 @@ function Products() {
               { label: "No discount", value: "no-discount" },
             ]}
           />
-          <Sort options={[{ label: "Sort by name (A-Z)" }]} />
+          <Sort options={[{ label: "Sort by name (A-Z)" }, {}]} />
         </div>
       </div>
     </div>
