@@ -1,9 +1,13 @@
+import OrdersTableOperations from "../features/orders/OrdersTableOperations";
 import Heading from "../ui/Heading";
 
 function Orders() {
   return (
     <div>
-      <Heading as="h1">Orders</Heading>
+      <div className="flex items-center justify-between">
+        <Heading as="h1">Orders</Heading>
+        <OrdersTableOperations />
+      </div>
     </div>
   );
 }

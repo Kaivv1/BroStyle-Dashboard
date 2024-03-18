@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useDarkMode } from "../contexts/DarkModeContext";
+import { useDarkMode } from "../contexts/useDarkMode";
 import {
   HiOutlineUser,
   HiOutlineMoon,

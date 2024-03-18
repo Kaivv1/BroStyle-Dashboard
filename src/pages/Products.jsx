@@ -1,23 +1,22 @@
-import Filter from "../ui/Filter";
+/* eslint-disable */
+
+import AddProduct from "../features/products/AddProduct";
+import ProductsTable from "../features/products/ProductsTable";
+import ProductsTableOperations from "../features/products/ProductsTableOperations";
+import { useProducts } from "../features/products/useProducts";
 import Heading from "../ui/Heading";
-import Sort from "../ui/Sort";
 
 function Products() {
+  const { isLoading, products } = useProducts();
+
   return (
-    <div>
-      <div>
+    <div className="flex flex-col gap-8">
+      <div className="flex items-center justify-between">
         <Heading as="h1">Products</Heading>
-        <div>
-          <Filter
-            options={[
-              { label: "All", value: "all" },
-              { label: "With discount", value: "discount" },
-              { label: "No discount", value: "no-discount" },
-            ]}
-          />
-          <Sort options={[{ label: "Sort by name (A-Z)" }, {}]} />
-        </div>
+        <ProductsTableOperations />
       </div>
+      <ProductsTable products={products?.products} isLoading={isLoading} />
+      {!isLoading && <AddProduct />}
     </div>
   );
 }
