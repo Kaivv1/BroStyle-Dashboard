@@ -1,5 +1,5 @@
 function ErrorFallback() {
-  return <div>There was a ErrorFallback</div>;
+  return <div>asdasd</div>;
 }
 
 export default ErrorFallback;

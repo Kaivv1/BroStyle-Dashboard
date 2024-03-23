@@ -8,7 +8,7 @@ function Modal({ children, onClose }) {
   return createPortal(
     <div
       className="absolute inset-0 flex items-center justify-center p-1 backdrop-blur-sm backdrop-brightness-75 sm:p-0
-      dark:backdrop-brightness-125
+      dark:backdrop-brightness-75
     "
     >
       <div

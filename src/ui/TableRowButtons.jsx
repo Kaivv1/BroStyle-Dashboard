@@ -17,7 +17,7 @@ function TableRowButtons({ children }) {
       </button>
       {isOpen && (
         <div
-          className={`absolute -left-1 top-10 z-50 flex flex-col gap-2 rounded-md bg-gray-100 p-1 shadow-md dark:bg-gray-900`}
+          className={`absolute -left-1 top-10 z-50 flex w-max flex-col gap-2 rounded-md border-[0.1rem] border-gray-200 bg-gray-100 p-1 shadow-md dark:border-gray-700 dark:bg-gray-900`}
           onClick={() => setIsOpen(false)}
         >
           {children}

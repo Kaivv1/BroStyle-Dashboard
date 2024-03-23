@@ -3,12 +3,12 @@ function Loader({ size, color }) {
   if (size === "sm" && color === "white")
     return (
       <span
-        className={`loader block h-5 w-5 border-2 border-gray-200 border-b-transparent`}
+        className={`loader block h-4 w-4 border-2 border-gray-200 border-b-transparent`}
       ></span>
     );
 
   if (size === "sm" && !color) {
-    return <span className="loader block h-5 w-5 border-2"></span>;
+    return <span className="loader block h-4 w-4 border-2"></span>;
   }
 
   if (size === "lg")

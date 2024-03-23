@@ -8,8 +8,8 @@ function OrdersTableOperations() {
         options={[
           { label: "All", value: "all" },
           { label: "Completed", value: "completed" },
-          { label: "Shipped", value: "shipped" },
-          { label: "Canceled", value: "canceled" },
+          { label: "Processing", value: "processing" },
+          { label: "Pending", value: "pending" },
         ]}
       />
       <Sort

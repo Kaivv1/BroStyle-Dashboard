@@ -18,6 +18,15 @@ export async function getProducts() {
   return { products, error };
 }
 
+export async function getProductsByIds(ids) {
+  const { data: products, error } = await supabase
+    .from("products")
+    .select("*")
+    .in("id", ids);
+
+  return { products, error };
+}
+
 export async function createProduct(newProduct) {
   const { imageName, imageUrl } = createProductImage(newProduct);
 
@@ -90,7 +99,7 @@ export async function deleteProduct(id) {
     .eq("id", id)
     .single();
 
-  const { data, error: errorDeleteProduct } = await supabase
+  const { error: errorDeleteProduct } = await supabase
     .from("products")
     .delete()
     .eq("id", id);
@@ -103,6 +112,4 @@ export async function deleteProduct(id) {
 
   if (errorProduct || errorDeleteProduct || errorImage)
     throw new Error("There was a probelm deleting this product");
-
-  return data;
 }

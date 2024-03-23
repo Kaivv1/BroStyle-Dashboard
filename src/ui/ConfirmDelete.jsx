@@ -12,17 +12,19 @@ function ConfirmDelete({ resourseName, onClose, onDelete, isLoading }) {
           Cancel
         </button>
         <button
-          className="buttonDefault"
+          className="buttonDelete"
           onClick={onDelete}
           disabled={isLoading}
         >
           {isLoading ? (
             <>
-              <span>Deleting...</span>
+              <span>Deleting</span>
               <Loader size="sm" color="white" />
             </>
           ) : (
-            <span>Delete</span>
+            <>
+              <span>Delete</span>
+            </>
           )}
         </button>
       </div>
