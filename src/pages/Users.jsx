@@ -1,9 +1,11 @@
+import CreateNewUserForm from "../features/authentication/CreateNewUserForm";
 import Heading from "../ui/Heading";
 
 function Users() {
   return (
-    <div>
-      <Heading as="h1">Users</Heading>
+    <div className="flex flex-col gap-8">
+      <Heading as="h1">Create new user</Heading>
+      <CreateNewUserForm />
     </div>
   );
 }

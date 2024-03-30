@@ -1,5 +1,4 @@
 /* eslint-disable */
-
 import AddProduct from "../features/products/AddProduct";
 import ProductsTable from "../features/products/ProductsTable";
 import ProductsTableOperations from "../features/products/ProductsTableOperations";
@@ -7,7 +6,7 @@ import { useProducts } from "../features/products/useProducts";
 import Heading from "../ui/Heading";
 
 function Products() {
-  const { isLoading, products } = useProducts();
+  const { isLoading, products, count } = useProducts();
 
   return (
     <div className="flex flex-col gap-8">
@@ -15,7 +14,7 @@ function Products() {
         <Heading as="h1">Products</Heading>
         <ProductsTableOperations />
       </div>
-      <ProductsTable products={products?.products} isLoading={isLoading} />
+      <ProductsTable products={products} isLoading={isLoading} count={count} />
       {!isLoading && <AddProduct />}
     </div>
   );

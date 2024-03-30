@@ -1,3 +1,5 @@
+/* eslint-disable */
+import { PAGE_SIZE } from "../utils/constants";
 import { getImageName } from "../utils/helpers";
 import { supabase, supabaseUrl } from "./supabase";
 
@@ -13,9 +15,20 @@ function createProductImage(product) {
   return { imageName, imageUrl };
 }
 
-export async function getProducts() {
-  const { data: products, error } = await supabase.from("products").select("*");
-  return { products, error };
+export async function getProducts(page) {
+  const from = (page - 1) * PAGE_SIZE;
+  const to = from + PAGE_SIZE - 1;
+
+  const {
+    data: products,
+    error,
+    count,
+  } = await supabase
+    .from("products")
+    .select("*", { count: "exact" })
+    .range(from, to);
+
+  return { products, error, count };
 }
 
 export async function getProductsByIds(ids) {

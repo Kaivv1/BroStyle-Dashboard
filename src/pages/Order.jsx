@@ -1,5 +1,4 @@
 /*eslint-disable */
-
 import OrderCard from "../features/orders/OrderCard";
 import Heading from "../ui/Heading";
 import { useOrder } from "../features/orders/useOrder";
@@ -30,7 +29,6 @@ function Order() {
   // });
 
   // console.log(data);
-  console.log(order);
   return (
     <>
       <div className="flex flex-col gap-8">

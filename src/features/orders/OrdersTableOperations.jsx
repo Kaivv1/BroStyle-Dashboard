@@ -5,6 +5,7 @@ function OrdersTableOperations() {
   return (
     <div className="flex items-center gap-3">
       <Filter
+        filterField="status"
         options={[
           { label: "All", value: "all" },
           { label: "Completed", value: "completed" },

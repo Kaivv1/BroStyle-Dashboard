@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useNavigate } from "react-router-dom";
 import { useDarkMode } from "../contexts/useDarkMode";
 import {
@@ -6,10 +7,13 @@ import {
   HiOutlineSun,
   HiArrowRightOnRectangle,
 } from "react-icons/hi2";
+import Loader from "./Loader";
+import { useLogout } from "../features/authentication/useLogout";
 
 function HeaderMenu() {
   const navigate = useNavigate();
   const { toggleDarkMode, isDarkMode } = useDarkMode();
+  const { logout, isLoggingOut } = useLogout();
 
   return (
     <ul className="flex gap-2">
@@ -24,8 +28,8 @@ function HeaderMenu() {
         </button>
       </li>
       <li className="flex items-center">
-        <button className="buttonIcon">
-          <HiArrowRightOnRectangle />
+        <button className="buttonIcon" onClick={logout}>
+          {isLoggingOut ? <Loader size="md" /> : <HiArrowRightOnRectangle />}
         </button>
       </li>
     </ul>
