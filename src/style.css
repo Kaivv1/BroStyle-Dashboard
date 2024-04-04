@@ -49,6 +49,14 @@
   input[type="file"]::-webkit-file-upload-button {
     @apply mr-3 cursor-pointer rounded-md border-none bg-color-brand-600 p-2 text-sm text-white transition hover:bg-color-brand-700 focus:outline-none focus:ring-1 focus:ring-color-brand-600 disabled:cursor-not-allowed  disabled:opacity-80 dark:text-gray-200;
   }
+
+  .no-scrollbar {
+    -webkit-scrollbar {
+      width: 0 !important;
+    }
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
 }
 
 *,

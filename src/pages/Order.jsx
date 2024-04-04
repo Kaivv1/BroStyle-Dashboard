@@ -4,8 +4,6 @@ import Heading from "../ui/Heading";
 import { useOrder } from "../features/orders/useOrder";
 import Loader from "../ui/Loader";
 import OrderStatus from "../ui/OrderStatus";
-import { useQuery } from "@tanstack/react-query";
-import { fetchAddress } from "../services/geoApi";
 import { useDeleteOrder } from "../features/orders/useDeleteOrder";
 import { useToggleModal } from "../hooks/useToggleModal";
 import Modal from "../ui/Modal";
@@ -22,13 +20,7 @@ function Order() {
       onSettled: () => toggleOpenModal(),
     });
   }
-  // const { data } = useQuery({
-  //   queryKey: ["address"],
-  //   queryFn: fetchAddress,
-  //   retry: false,
-  // });
 
-  // console.log(data);
   return (
     <>
       <div className="flex flex-col gap-8">

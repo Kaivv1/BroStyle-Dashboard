@@ -14,6 +14,9 @@ function Loader({ size, color, auth }) {
   if (size === "md")
     return <span className="loader block h-6 w-6 border-2"></span>;
 
+  if (size === "md2")
+    return <span className="loader block h-7 w-7 border-2"></span>;
+
   if (size === "lg")
     return (
       <div className="flex items-center justify-center py-8">

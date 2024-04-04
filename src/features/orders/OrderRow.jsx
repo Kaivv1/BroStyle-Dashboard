@@ -54,7 +54,7 @@ function OrderRow({ order }) {
           </button>
         </TableRowButtons>
         <p>
-          #{`${id < 10 && "0"}`}
+          #{`${id < 10 ? "0" : ""}`}
           {id}
         </p>
         <p className="flex flex-col">

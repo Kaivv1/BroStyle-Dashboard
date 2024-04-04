@@ -37,7 +37,7 @@ function ProductsTable({ products, isLoading, count }) {
   if (!products?.length) return <Empty resourceName="products" />;
 
   return (
-    <div className="rounded-md border-[0.1rem] border-gray-200 dark:border-gray-700">
+    <div className="rounded-md border-[0.1rem] border-gray-200 dark:border-gray-700 dark:shadow-md">
       <ProductsTableHeader />
       {sortedProducts?.map((product) => (
         <ProductRow product={product} key={product.id} />

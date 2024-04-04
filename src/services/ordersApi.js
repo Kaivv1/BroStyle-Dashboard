@@ -1,5 +1,7 @@
 /* eslint-disable */
+import { isToday } from "date-fns";
 import { PAGE_SIZE } from "../utils/constants";
+import { getToday } from "../utils/helpers";
 import { supabase } from "./supabase";
 
 export async function getOrders(page) {
@@ -62,4 +64,29 @@ export async function deleteOrder(id) {
 
   if (deleteOrderError || deleteOrderItemsError)
     throw new Error("There was a problem deleting this order");
+}
+
+export async function getOrdersAfterDate(date) {
+  const { data: orders, error } = await supabase
+    .from("orders")
+    .select("*, profiles(email, full_name), order_items(products(*), quantity)")
+    .gte("created_at", date)
+    .lte("created_at", getToday({ end: true }));
+
+  if (error)
+    throw new Error("There was a problem getting the orders after this date");
+
+  return orders;
+}
+
+export async function getOrdersToday() {
+  const { data: orders, error } = await supabase
+    .from("orders")
+    .select("*, profiles(email, full_name), order_items(*)");
+
+  const ordersToday = orders.filter((order) => isToday(order.created_at));
+
+  if (error) throw new Error("Could not get todays activity");
+  // console.log(ordersToday);
+  return ordersToday;
 }

@@ -30,3 +30,15 @@ export function calcOrderTotalPrice(order_items, priorityPrice = 0) {
 
 export const formatDistanceFromNow = (dataStr) =>
   formatDistance(parseISO(dataStr), new Date(), { addSuffix: true });
+
+export function getToday(options = {}) {
+  const today = new Date();
+
+  if (options?.end) {
+    today.setUTCHours(23, 59, 99, 999);
+  } else {
+    today.setUTCHours(0, 0, 0, 0);
+  }
+
+  return today.toISOString();
+}
