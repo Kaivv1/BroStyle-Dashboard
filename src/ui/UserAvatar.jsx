@@ -1,8 +1,10 @@
 /* eslint-disable */
 import { useUser } from "../features/authentication/useUser";
+import { useSettings } from "../features/settings/useSettings";
 
 function UserAvatar() {
   const { user } = useUser();
+  const { settings: { display_name } = {} } = useSettings();
   const defaultUserImage = "../../public/default-user.jpg";
 
   return (
@@ -12,7 +14,7 @@ function UserAvatar() {
         alt="user avatar"
         className="block aspect-square w-9 rounded-full object-cover object-center outline outline-1 outline-gray-200 dark:outline-gray-800"
       />
-      <p>{user?.full_name}</p>
+      <p>{display_name ? user?.full_name : user?.username}</p>
     </div>
   );
 }

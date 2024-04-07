@@ -31,20 +31,15 @@ export async function getAddress({ latitude, longitude }) {
 export async function fetchAddress() {
   const positionObj = await getPosition();
   const position = {
-    latitude: 35.689487,
-    longitude: 139.691711,
+    latitude: positionObj.coords.latitude,
+    longitude: positionObj.coords.longitude,
   };
-  // positionObj.coords.latitude
-  // positionObj.coords.longitude
-
-  //
 
   const addressObj = await getAddress(position);
   const countryFlag = await getCountryFlag(
     addressObj?.countryName.toLowerCase(),
   );
 
-  console.log(addressObj);
   const address = `${addressObj?.locality}, ${addressObj?.city}, ${addressObj?.countryName}${addressObj?.postcode ? `, ${addressObj?.postcode}` : ""}`;
 
   return { address, countryFlag };

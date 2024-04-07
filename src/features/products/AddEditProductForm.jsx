@@ -72,6 +72,7 @@ function AddEditProductForm({ productToEdit = {}, onClose }) {
           <input
             type="number"
             id="price"
+            step="any"
             min={0}
             className="input"
             {...register("price", {
@@ -84,7 +85,9 @@ function AddEditProductForm({ productToEdit = {}, onClose }) {
           <input
             type="number"
             id="discount"
+            step="any"
             min={0}
+            defaultValue={0}
             className="input"
             {...register("discount", {
               min: { value: 0, message: "Value must be greater or equal to 0" },

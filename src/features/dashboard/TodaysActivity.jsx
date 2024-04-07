@@ -43,7 +43,7 @@ function TodaysActivity() {
                 {order?.order_items?.length === 1 ? "item" : "items"}
               </p>
               <button
-                className="buttonDefault justify-center"
+                className="buttonDefault justify-center px-3 py-1"
                 onClick={() => navigate(`/orders/${order?.id}`)}
               >
                 <span>View</span>

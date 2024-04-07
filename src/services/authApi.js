@@ -11,7 +11,15 @@ function createUserAvatar(user) {
 }
 
 export async function register({ email, password, username, full_name }) {
-  const { data, error } = await supabase.auth.signUp({
+  const currUser = await getCurrentUser();
+
+  if (currUser.access !== "admin" && currUser.access !== "normal")
+    throw new Error("You don't have permissions to create a user");
+
+  const {
+    data: { user: registeredUser },
+    error: authError,
+  } = await supabase.auth.signUp({
     email,
     password,
     options: {
@@ -23,9 +31,17 @@ export async function register({ email, password, username, full_name }) {
     },
   });
 
-  if (error) throw new Error(error.message);
+  const { data: userProfile, error: profileError } = await supabase
+    .from("profiles")
+    .update({ access: "normal" })
+    .eq("id", registeredUser?.id)
+    .select()
+    .single();
 
-  return data;
+  if (authError || profileError)
+    throw new Error(authError?.message || profileError?.message);
+
+  return userProfile;
 }
 
 export async function login({ email, password }) {
@@ -80,7 +96,7 @@ export async function updateUser(obj) {
   if (userData.email !== obj.email) {
     const { error } = await supabase.auth.updateUser({ email: obj.email });
 
-    if (error) throw new Error("THere was a problem updating the user");
+    if (error) throw new Error("There was a problem updating the user");
   }
 
   if (obj.avatar && typeof obj.avatar !== "string") {
@@ -90,7 +106,6 @@ export async function updateUser(obj) {
         .from("avatars")
         .remove([oldAvatarName]);
 
-      console.log("deleting old avatar");
       if (deleteOldAvatarError)
         throw new Error("There was a problem updating user profile");
     }
@@ -104,7 +119,6 @@ export async function updateUser(obj) {
       .from("avatars")
       .upload(newAvatarName, obj.avatar);
 
-    console.log("uploading new avatar");
     if (uploadAvatarError)
       throw new Error("There was a problem updating user profile");
   } else {
@@ -125,13 +139,10 @@ export async function updateUser(obj) {
 }
 
 export async function updateUserPassword({ password }) {
-  console.log(password);
   const {
     data: { user },
     error,
   } = await supabase.auth.updateUser({ password });
-
-  console.log(user);
 
   if (error) throw new Error(error.message);
 

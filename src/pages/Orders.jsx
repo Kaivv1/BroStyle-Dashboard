@@ -1,3 +1,4 @@
+import CreateOrder from "../features/orders/CreateOrder";
 import OrdersTable from "../features/orders/OrdersTable";
 import OrdersTableOperations from "../features/orders/OrdersTableOperations";
 import { useOrders } from "../features/orders/useOrders";
@@ -13,6 +14,7 @@ function Orders() {
         <OrdersTableOperations />
       </div>
       <OrdersTable isLoading={isLoading} orders={orders} count={count} />
+      {!isLoading && <CreateOrder />}
     </div>
   );
 }

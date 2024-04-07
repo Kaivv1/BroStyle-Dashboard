@@ -14,6 +14,5 @@ export function useRecentOrders() {
     queryFn: () => getOrdersAfterDate(queryDate),
   });
 
-  console.log(numDays);
   return { isLoading, orders, numDays };
 }

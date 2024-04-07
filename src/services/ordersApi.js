@@ -46,7 +46,6 @@ export async function updateOrder(id, updatedOrder) {
 
   if (error) throw new Error("There was a error updating the order status");
 
-  console.log(data);
   return data;
 }
 
@@ -87,6 +86,29 @@ export async function getOrdersToday() {
   const ordersToday = orders.filter((order) => isToday(order.created_at));
 
   if (error) throw new Error("Could not get todays activity");
-  // console.log(ordersToday);
+
   return ordersToday;
+}
+
+export async function createOrder({ order, orderItems }) {
+  const payment_status = order.payment_method === "delivery" ? false : true;
+
+  const { data: createdOrder, error: createOrderError } = await supabase
+    .from("orders")
+    .insert({ ...order, status: "pending", payment_status })
+    .select()
+    .single();
+
+  const { error: itemsError } = await supabase.from("order_items").insert(
+    orderItems.map(({ quantity, products }) => {
+      return {
+        quantity,
+        productID: products.id,
+        orderID: createdOrder.id,
+      };
+    }),
+  );
+
+  if (createOrderError || itemsError)
+    throw new Error("There was a problem creating the order");
 }

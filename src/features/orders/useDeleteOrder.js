@@ -9,7 +9,7 @@ export function useDeleteOrder(id) {
     mutationFn: deleteOrderApi,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["orders"] });
-      toast.success(`Order #${id < 10 && "0"}${id} deleted`);
+      toast.success(`Order #${id < 10 ? "0" : ""}${id} deleted`);
     },
     onError: (error) => toast.error(error.message),
   });

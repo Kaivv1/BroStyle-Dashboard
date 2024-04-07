@@ -23,7 +23,6 @@ function Modal({ children, onClose }) {
             <HiXMark />
           </button>
         </div>
-
         <div>{children}</div>
       </div>
     </div>,

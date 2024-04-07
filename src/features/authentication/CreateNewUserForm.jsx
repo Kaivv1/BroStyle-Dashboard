@@ -15,7 +15,7 @@ function CreateNewUserForm() {
 
   return (
     <form
-      className="space-y-6 rounded-md border-[0.1rem] border-gray-200 bg-white p-6 dark:border-gray-600 dark:bg-gray-800 dark:shadow-md"
+      className="space-y-6 rounded-md border-[0.1rem] border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800 dark:shadow-md"
       onSubmit={handleSubmit(onSubmit)}
     >
       <div className="grid grid-cols-2 gap-4">

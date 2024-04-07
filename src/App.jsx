@@ -56,11 +56,13 @@ function App() {
           gutter={12}
           toastOptions={{
             success: {
-              duration: 3000,
+              duration: 4000,
             },
             error: {
-              duration: 5000,
+              duration: 6000,
             },
+            className:
+              "dark:bg-gray-700 dark:text-gray-100 bg-white text-gray-900 text-base px-5 py-3 max-w-34",
           }}
         />
       </QueryClientProvider>
