@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { useToggleModal } from "../../hooks/useToggleModal";
 import Modal from "../../ui/Modal";
 import CreateOrderForm from "./CreateOrderForm";

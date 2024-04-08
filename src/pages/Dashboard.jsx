@@ -4,7 +4,7 @@ import Heading from "../ui/Heading";
 
 function Dashboard() {
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-4 xl:gap-8">
       <div className="flex justify-between">
         <Heading as="h1">Dashboard</Heading>
         <DashboardFilter />

@@ -9,7 +9,6 @@ import Login from "./pages/Login";
 import Users from "./pages/Users";
 import ErrorFallback from "./pages/ErrorFallback";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toaster } from "react-hot-toast";
 import Settings from "./pages/Settings";
 import { DarkModeProvider } from "./contexts/DarkModeContext";
@@ -27,8 +26,6 @@ function App() {
   return (
     <DarkModeProvider>
       <QueryClientProvider client={queryClient}>
-        <ReactQueryDevtools initialIsOpen={true} />
-
         <BrowserRouter>
           <Routes>
             <Route

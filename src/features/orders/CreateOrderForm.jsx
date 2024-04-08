@@ -30,7 +30,8 @@ function CreateOrderForm({ onClose }) {
     const isAdded = orderItems.some(
       (orderItem) => orderItem.products.id === item.products.id,
     );
-    if (isAdded) return;
+    if (isAdded)
+      return toast.error("Product already added, you can adjust the quantity");
 
     setOrderItems((prev) => [...prev, item]);
   }
@@ -62,11 +63,10 @@ function CreateOrderForm({ onClose }) {
     );
   }
 
-  console.log(orderItems);
   return (
     <form className="w-auto sm:w-[30rem]" onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-col gap-2 ">
-        <FakeCart onAdd={addItem} onDelete={removeItem} />
+        <FakeCart onAdd={addItem} orderItems={orderItems} />
         {orderItems.length >= 1 && (
           <div className="input max-h-24 space-y-1 overflow-auto">
             {orderItems.map(({ quantity, products: product }) => (

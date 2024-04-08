@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { useUser } from "../features/authentication/useUser";
 import { useSettings } from "../features/settings/useSettings";
 

@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { useForm } from "react-hook-form";
 import FormRow from "../../ui/FormRow";
 import Heading from "../../ui/Heading";
@@ -12,14 +11,14 @@ function UpdateUserPasswordForm() {
 
   function onSubmit(data) {
     const { password } = data;
-    updateUserPassword({ password });
+    updateUserPassword({ password }, { onSettled: () => reset() });
   }
 
   return (
     <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
       <Heading as="h2">Update password</Heading>
-      <div className="space-y-4 rounded-md border-[0.1rem] border-gray-200 bg-white p-6 dark:border-gray-600 dark:bg-gray-800 dark:shadow-md">
-        <div className="grid grid-cols-2 gap-4 ">
+      <div className="space-y-4 rounded-md border-[0.1rem] border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800 dark:shadow-md">
+        <div className="grid grid-cols-2 gap-4">
           <FormRow label="New password" error={errors?.password?.message}>
             <input
               type="password"

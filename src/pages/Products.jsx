@@ -9,7 +9,7 @@ function Products() {
   const { isLoading, products, count } = useProducts();
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-4 xl:gap-8">
       <div className="flex items-center justify-between">
         <Heading as="h1">Products</Heading>
         <ProductsTableOperations />

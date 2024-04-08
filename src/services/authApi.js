@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { getImageName } from "../utils/helpers";
 import { supabase, supabaseUrl } from "./supabase";
 

@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { useQuery } from "@tanstack/react-query";
 import { getOrdersToday } from "../../services/ordersApi";
 

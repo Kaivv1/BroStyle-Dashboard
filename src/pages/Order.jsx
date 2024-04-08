@@ -1,4 +1,3 @@
-/*eslint-disable */
 import OrderCard from "../features/orders/OrderCard";
 import Heading from "../ui/Heading";
 import { useOrder } from "../features/orders/useOrder";
@@ -23,7 +22,7 @@ function Order() {
 
   return (
     <>
-      <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-4 xl:gap-8">
         <div className="flex items-center gap-4">
           <Heading as="h1">
             Order #{order?.id < 10 && "0"}

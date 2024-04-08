@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { getOrders } from "../../services/ordersApi";
 import { useSearchParams } from "react-router-dom";

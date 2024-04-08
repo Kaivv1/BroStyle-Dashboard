@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { PAGE_SIZE } from "../utils/constants";
 import { getImageName } from "../utils/helpers";
 import { getCurrentUser } from "./authApi";

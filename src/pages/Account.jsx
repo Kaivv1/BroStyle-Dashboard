@@ -5,7 +5,7 @@ import Heading from "../ui/Heading";
 
 function Account() {
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-4 xl:gap-8">
       <Heading as="h1">Update your account</Heading>
       <div className="space-y-4">
         <UpdateUserAccountForm />

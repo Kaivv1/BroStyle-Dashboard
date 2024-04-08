@@ -21,16 +21,18 @@ function UpdateUserAccountForm() {
 
     if (data.avatar) {
       avatar = typeof data.avatar === "string" ? data.avatar : data.avatar[0];
-      console.log(avatar);
     }
 
-    updateUser({ ...data, avatar: avatar ? avatar : null });
+    updateUser(
+      { ...data, avatar: avatar ? avatar : null },
+      { onSettled: () => reset() },
+    );
   }
 
   return (
     <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
       <Heading as="h2">Update user data</Heading>
-      <div className="space-y-4 rounded-md border-[0.1rem] border-gray-200 bg-white p-6 dark:border-gray-600 dark:bg-gray-800 dark:shadow-md">
+      <div className="space-y-4 rounded-md border-[0.1rem] border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800 dark:shadow-md">
         <div className="grid grid-cols-2 gap-4">
           <FormRow label="Avatar" error={errors?.avatar?.message}>
             <input

@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { useForm } from "react-hook-form";
 import FormRow from "../../ui/FormRow";
 import Loader from "../../ui/Loader";

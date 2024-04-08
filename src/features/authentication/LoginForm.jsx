@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { useForm } from "react-hook-form";
 import FormRow from "../../ui/FormRow";
 import Heading from "../../ui/Heading";
@@ -7,7 +6,9 @@ import Loader from "../../ui/Loader";
 import { useToggleVisibility } from "../../hooks/useToggleVisibility";
 
 function LoginForm() {
-  const { register, handleSubmit, formState } = useForm();
+  const { register, handleSubmit, formState } = useForm({
+    defaultValues: { email: "demo@asd.com", password: "pass123" },
+  });
   const { login, isLogging } = useLogin();
   const { errors } = formState;
   const { icon, inputType } = useToggleVisibility();
@@ -15,7 +16,6 @@ function LoginForm() {
   function onSubmit(data) {
     login(data);
   }
-
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}

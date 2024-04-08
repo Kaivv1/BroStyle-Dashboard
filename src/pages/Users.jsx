@@ -3,7 +3,7 @@ import Heading from "../ui/Heading";
 
 function Users() {
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-4 xl:gap-8">
       <Heading as="h1">Create new user</Heading>
       <CreateNewUserForm />
     </div>

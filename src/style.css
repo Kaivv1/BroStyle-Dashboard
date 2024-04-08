@@ -34,7 +34,7 @@
   }
 
   .buttonOutlined {
-    @apply rounded-md border-[0.1rem] border-gray-200 px-3 py-2 hover:bg-gray-200 focus:outline-none focus:ring-1 focus:ring-color-brand-600 dark:border-gray-600 dark:hover:bg-gray-900;
+    @apply rounded-md border-[0.1rem] border-gray-200 px-3 py-2 hover:bg-gray-200 focus:outline-none focus:ring-1 focus:ring-color-brand-600 dark:border-gray-700 dark:hover:bg-gray-900;
   }
 
   .input {
@@ -112,4 +112,14 @@ a {
 
 .active svg {
   color: #4f46e5;
+}
+
+::-webkit-scrollbar {
+  @apply w-2;
+}
+::-webkit-scrollbar-track {
+  @apply bg-white dark:bg-gray-900;
+}
+::-webkit-scrollbar-thumb {
+  @apply rounded-full bg-gray-400 dark:bg-gray-700;
 }

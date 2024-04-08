@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { useNavigate } from "react-router-dom";
 import Heading from "../../ui/Heading";
 import Loader from "../../ui/Loader";
