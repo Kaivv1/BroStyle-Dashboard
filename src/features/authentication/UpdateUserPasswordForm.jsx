@@ -3,12 +3,14 @@ import FormRow from "../../ui/FormRow";
 import Heading from "../../ui/Heading";
 import Loader from "../../ui/Loader";
 import { useUpdateUserPassword } from "./useUpdateUserPassword";
+import { useToggleVisibility } from "../../hooks/useToggleVisibility";
 
 function UpdateUserPasswordForm() {
   const { updateUserPassword, isUpdating } = useUpdateUserPassword();
   const { register, handleSubmit, formState, getValues, reset } = useForm();
   const { errors } = formState;
-
+  const { iconOne, iconTwo, inputTypeOne, inputTypeTwo } =
+    useToggleVisibility();
   function onSubmit(data) {
     const { password } = data;
     updateUserPassword({ password }, { onSettled: () => reset() });
@@ -20,26 +22,37 @@ function UpdateUserPasswordForm() {
       <div className="space-y-4 rounded-md border-[0.1rem] border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800 dark:shadow-md">
         <div className="grid grid-cols-2 gap-4">
           <FormRow label="New password" error={errors?.password?.message}>
-            <input
-              type="password"
-              className="input
-        "
-              {...register("password")}
-            />
+            <div className="relative flex items-center" id="password">
+              <input
+                type={inputTypeOne}
+                className="input w-full"
+                {...register("password", {
+                  required: "This field is required",
+                })}
+              />
+              <span className="absolute right-3 cursor-pointer text-xl">
+                {iconOne}
+              </span>
+            </div>
           </FormRow>
           <FormRow
             label="Confirm password"
             error={errors?.confirmPassword?.message}
           >
-            <input
-              type="password"
-              className="input
-        "
-              {...register("confirmPassword", {
-                validate: (value) =>
-                  value === getValues("password") || "Passwords do not match",
-              })}
-            />
+            <div className="relative flex items-center" id="password">
+              <input
+                type={inputTypeTwo}
+                className="input w-full"
+                {...register("confirmPassword", {
+                  required: "This field is required",
+                  validate: (value) =>
+                    value === getValues("password") || "Passwords do not match",
+                })}
+              />
+              <span className="absolute right-3 cursor-pointer text-xl">
+                {iconTwo}
+              </span>
+            </div>
           </FormRow>
         </div>
         <div className="flex justify-end gap-4">

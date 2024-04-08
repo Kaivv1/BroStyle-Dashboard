@@ -11,11 +11,12 @@ function LoginForm() {
   });
   const { login, isLogging } = useLogin();
   const { errors } = formState;
-  const { icon, inputType } = useToggleVisibility();
+  const { iconOne, inputTypeOne } = useToggleVisibility();
 
   function onSubmit(data) {
     login(data);
   }
+
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
@@ -35,14 +36,14 @@ function LoginForm() {
       <FormRow label="Password" error={errors?.password?.message}>
         <div className="relative flex items-center" id="password">
           <input
-            type={inputType}
+            type={inputTypeOne}
             className="input w-full"
             {...register("password", {
               required: "This field is required",
             })}
           />
           <span className="absolute right-3 cursor-pointer text-xl">
-            {icon}
+            {iconOne}
           </span>
         </div>
       </FormRow>

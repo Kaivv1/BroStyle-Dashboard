@@ -2,11 +2,13 @@ import { useForm } from "react-hook-form";
 import FormRow from "../../ui/FormRow";
 import Loader from "../../ui/Loader";
 import { useCreateUser } from "./useCreateUser";
+import { useToggleVisibility } from "../../hooks/useToggleVisibility";
 
 function CreateNewUserForm() {
   const { register, reset, formState, handleSubmit } = useForm();
   const { errors } = formState;
   const { isCreating, signup } = useCreateUser();
+  const { inputTypeOne, iconOne } = useToggleVisibility();
 
   function onSubmit(data) {
     signup({ ...data });
@@ -19,25 +21,54 @@ function CreateNewUserForm() {
     >
       <div className="grid grid-cols-2 gap-4">
         <FormRow label="Full Name" error={errors?.full_name?.message}>
-          <input type="text" className="input" {...register("full_name")} />
+          <input
+            type="text"
+            className="input"
+            {...register("full_name", {
+              required: "This field is required",
+            })}
+          />
         </FormRow>
         <FormRow label="Username" error={errors?.username?.message}>
-          <input type="text" className="input" {...register("username")} />
+          <input
+            type="text"
+            className="input"
+            {...register("username", {
+              required: "This field is required",
+            })}
+          />
         </FormRow>
         <FormRow label="Email" error={errors?.email?.message}>
-          <input type="email" className="input" {...register("email")} />
+          <input
+            type="email"
+            className="input"
+            {...register("email", {
+              required: "This field is required",
+            })}
+          />
         </FormRow>
         <FormRow
           label="Password(at least 6 chars)"
           error={errors?.password?.message}
         >
-          <input type="password" className="input" {...register("password")} />
+          <div className="relative flex items-center" id="password">
+            <input
+              type={inputTypeOne}
+              className="input w-full"
+              {...register("password", {
+                required: "This field is required",
+              })}
+            />
+            <span className="absolute right-3 cursor-pointer text-xl">
+              {iconOne}
+            </span>
+          </div>
         </FormRow>
       </div>
-
       <div className="flex justify-end gap-4">
         <button
           onClick={() => reset()}
+          type="button"
           className="buttonOutlined bg-white dark:bg-gray-900 dark:hover:bg-gray-800"
         >
           Cancel

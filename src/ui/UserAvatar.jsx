@@ -4,7 +4,7 @@ import { useSettings } from "../features/settings/useSettings";
 function UserAvatar() {
   const { user } = useUser();
   const { settings: { display_name } = {} } = useSettings();
-  const defaultUserImage = "../../public/default-user.jpg";
+  const defaultUserImage = "../../default-user.jpg";
 
   return (
     <div className="flex items-center gap-2">

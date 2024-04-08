@@ -4,7 +4,7 @@ import { supabase, supabaseUrl } from "./supabase";
 function createUserAvatar(user) {
   const avatarName = `${Math.random()}-${user?.full_name}`;
 
-  const avatarUrl = `${supabaseUrl}//storage/v1/object/public/avatars/${avatarName}`;
+  const avatarUrl = `${supabaseUrl}/storage/v1/object/public/avatars/${avatarName}`;
 
   return { avatarName, avatarUrl };
 }
@@ -30,17 +30,13 @@ export async function register({ email, password, username, full_name }) {
     },
   });
 
-  const { data: userProfile, error: profileError } = await supabase
+  const { error: profileError } = await supabase
     .from("profiles")
     .update({ access: "normal" })
-    .eq("id", registeredUser?.id)
-    .select()
-    .single();
+    .eq("id", registeredUser?.id);
 
   if (authError || profileError)
     throw new Error(authError?.message || profileError?.message);
-
-  return userProfile;
 }
 
 export async function login({ email, password }) {

@@ -3,15 +3,22 @@ import { HiOutlineEye } from "react-icons/hi2";
 import { HiOutlineEyeSlash } from "react-icons/hi2";
 
 export function useToggleVisibility() {
-  const [visible, setVisible] = useState(false);
+  const [visibleOne, setVisibleOne] = useState(false);
+  const [visibleTwo, setVisibleTwo] = useState(false);
 
-  const icon = (
-    <span onClick={() => setVisible((prev) => !prev)}>
-      {visible ? <HiOutlineEyeSlash /> : <HiOutlineEye />}
+  const iconOne = (
+    <span onClick={() => setVisibleOne((prev) => !prev)}>
+      {visibleOne ? <HiOutlineEyeSlash /> : <HiOutlineEye />}
+    </span>
+  );
+  const iconTwo = (
+    <span onClick={() => setVisibleTwo((prev) => !prev)}>
+      {visibleTwo ? <HiOutlineEyeSlash /> : <HiOutlineEye />}
     </span>
   );
 
-  const inputType = visible ? "text" : "password";
+  const inputTypeOne = visibleOne ? "text" : "password";
+  const inputTypeTwo = visibleTwo ? "text" : "password";
 
-  return { icon, inputType };
+  return { iconOne, inputTypeOne, iconTwo, inputTypeTwo };
 }
