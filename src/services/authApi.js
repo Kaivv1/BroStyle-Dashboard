@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { getImageName } from "../utils/helpers";
 import { supabase, supabaseUrl } from "./supabase";
 
@@ -79,11 +80,11 @@ export async function updateUser(obj) {
     .eq("id", obj.id)
     .single();
 
-  if (userData.email !== obj.email) {
-    const { error } = await supabase.auth.updateUser({ email: obj.email });
+  const { error } = await supabase.auth.updateUser({
+    email: obj.email,
+  });
 
-    if (error) throw new Error("There was a problem updating the user");
-  }
+  if (error) throw new Error("There was a problem updating the user");
 
   if (obj.avatar && typeof obj.avatar !== "string") {
     if (userData?.avatar && typeof obj.avatar !== "string") {

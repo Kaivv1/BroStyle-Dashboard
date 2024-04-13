@@ -4,7 +4,6 @@ import { getProducts } from "../services/productsApi";
 import { useRef, useState } from "react";
 
 function FakeCart({ onAdd }) {
-  const [isAdded, setIsAdded] = useState(false);
   const [{ quantity, item, showError, error }, setCurrItem] = useState({
     quantity: 0,
     item: null,
