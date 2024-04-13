@@ -1,6 +1,6 @@
 /* eslint-disable */
 import { useQuery } from "@tanstack/react-query";
-import { getAllProducts } from "../services/productsApi";
+import { getProducts } from "../services/productsApi";
 import { useRef, useState } from "react";
 
 function FakeCart({ onAdd }) {
@@ -14,7 +14,7 @@ function FakeCart({ onAdd }) {
   const selectRef = useRef(null);
   const { data: products } = useQuery({
     queryKey: ["products", "fakeCart"],
-    queryFn: getAllProducts,
+    queryFn: getProducts,
   });
 
   function inc() {

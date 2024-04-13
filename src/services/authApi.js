@@ -15,10 +15,7 @@ export async function register({ email, password, username, full_name }) {
   if (currUser.access !== "admin" && currUser.access !== "normal")
     throw new Error("You don't have permissions to create a user");
 
-  const {
-    data: { user: registeredUser },
-    error: authError,
-  } = await supabase.auth.signUp({
+  const { error: authError } = await supabase.auth.signUp({
     email,
     password,
     options: {
@@ -30,13 +27,7 @@ export async function register({ email, password, username, full_name }) {
     },
   });
 
-  const { error: profileError } = await supabase
-    .from("profiles")
-    .update({ access: "normal" })
-    .eq("id", registeredUser?.id);
-
-  if (authError || profileError)
-    throw new Error(authError?.message || profileError?.message);
+  if (authError) throw new Error(authError?.message);
 }
 
 export async function login({ email, password }) {

@@ -10,7 +10,7 @@ function UpdateUserAccountForm() {
   const { user } = useUser();
   const { isAuthenticated, ...userDataForEdit } = user;
   const { updateUser, isUpdating } = useUpdateUser();
-  const { register, formState, handleSubmit, reset } = useForm({
+  const { register, formState, handleSubmit, reset, getValues } = useForm({
     defaultValues: { ...userDataForEdit },
   });
 
@@ -43,13 +43,28 @@ function UpdateUserAccountForm() {
             />
           </FormRow>
           <FormRow label="Email" error={errors?.email?.message}>
-            <input type="email" className="input" {...register("email")} />
+            <input
+              type="email"
+              className="input"
+              {...register("email")}
+              disabled={getValues("email") === "demo@asd.com" || isUpdating}
+            />
           </FormRow>
           <FormRow label="Full Name" error={errors?.full_name?.message}>
-            <input type="text" className="input" {...register("full_name")} />
+            <input
+              type="text"
+              className="input"
+              {...register("full_name")}
+              disabled={isUpdating}
+            />
           </FormRow>
           <FormRow label="Username" error={errors?.username?.message}>
-            <input type="text" className="input" {...register("username")} />
+            <input
+              type="text"
+              className="input"
+              {...register("username")}
+              disabled={isUpdating}
+            />
           </FormRow>
         </div>
         <div className="flex justify-end gap-4">

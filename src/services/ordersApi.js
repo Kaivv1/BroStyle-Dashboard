@@ -1,27 +1,17 @@
 import { isToday } from "date-fns";
-import { PAGE_SIZE } from "../utils/constants";
 import { getToday } from "../utils/helpers";
 import { supabase } from "./supabase";
 
-export async function getOrders(page) {
-  const from = (page - 1) * PAGE_SIZE;
-  const to = from + PAGE_SIZE - 1;
-
-  const {
-    data: orders,
-    error,
-    count,
-  } = await supabase
+export async function getOrders() {
+  const { data: orders, error } = await supabase
     .from("orders")
     .select(
       "*, profiles(email, full_name), order_items(products(*), quantity)",
-      { count: "exact" },
-    )
-    .range(from, to);
+    );
 
   if (error) throw new Error("There was a problem getting the orders");
 
-  return { orders, count };
+  return orders;
 }
 
 export async function getOrderById(id) {
