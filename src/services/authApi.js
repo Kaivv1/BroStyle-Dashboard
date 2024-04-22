@@ -113,8 +113,6 @@ export async function updateUser(obj) {
     .select()
     .single();
 
-  console.log(obj.email);
-
   if (userData.email !== obj.email) {
     const { error } = await supabase.auth.updateUser({ email: obj.email });
     console.log("trying to update email");

@@ -11,7 +11,6 @@ function UpdateUserAccountForm() {
   const { isAuthenticated, ...userDataForEdit } = user;
   const { updateUser, isUpdating } = useUpdateUser();
   const { register, formState, handleSubmit, reset, getValues } = useForm({
-  const { register, formState, handleSubmit, reset, getValues } = useForm({
     defaultValues: { ...userDataForEdit },
   });
 
@@ -58,20 +57,8 @@ function UpdateUserAccountForm() {
               {...register("full_name")}
               disabled={isUpdating}
             />
-            <input
-              type="text"
-              className="input"
-              {...register("full_name")}
-              disabled={isUpdating}
-            />
           </FormRow>
           <FormRow label="Username" error={errors?.username?.message}>
-            <input
-              type="text"
-              className="input"
-              {...register("username")}
-              disabled={isUpdating}
-            />
             <input
               type="text"
               className="input"
