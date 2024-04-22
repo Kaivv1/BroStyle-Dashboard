@@ -6,9 +6,8 @@ import OrderRow from "./OrderRow";
 import { useSettings } from "../settings/useSettings";
 import { calcOrderTotalPrice } from "../../utils/helpers";
 import { useSearchParams } from "react-router-dom";
-import Pagination from "../../ui/Pagination";
 
-function OrdersTable({ isLoading, orders, count }) {
+function OrdersTable({ isLoading, orders }) {
   const [searchParams] = useSearchParams();
   const { settings } = useSettings();
 
@@ -54,7 +53,6 @@ function OrdersTable({ isLoading, orders, count }) {
       {sortedOrders.map((order) => (
         <OrderRow key={order.id} order={order} />
       ))}
-      <Pagination count={count} />
     </div>
   );
 }

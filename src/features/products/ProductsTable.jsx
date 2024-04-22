@@ -4,9 +4,8 @@ import Empty from "../../ui/Empty";
 import Loader from "../../ui/Loader";
 import ProductRow from "./ProductRow";
 import ProductsTableHeader from "./ProductsTableHeader";
-import Pagination from "../../ui/Pagination";
 
-function ProductsTable({ products, isLoading, count }) {
+function ProductsTable({ products, isLoading }) {
   const [searchParams] = useSearchParams();
   const filteredValue = searchParams.get("discount") || "all";
 
@@ -42,8 +41,6 @@ function ProductsTable({ products, isLoading, count }) {
       {sortedProducts?.map((product) => (
         <ProductRow product={product} key={product.id} />
       ))}
-
-      <Pagination count={count} />
     </div>
   );
 }

@@ -5,7 +5,7 @@ import { useOrders } from "../features/orders/useOrders";
 import Heading from "../ui/Heading";
 
 function Orders() {
-  const { isLoading, orders, count } = useOrders();
+  const { isLoading, orders } = useOrders();
 
   return (
     <div className="flex flex-col gap-4 xl:gap-8">
@@ -13,7 +13,7 @@ function Orders() {
         <Heading as="h1">Orders</Heading>
         <OrdersTableOperations />
       </div>
-      <OrdersTable isLoading={isLoading} orders={orders} count={count} />
+      <OrdersTable isLoading={isLoading} orders={orders} />
       {!isLoading && <CreateOrder />}
     </div>
   );

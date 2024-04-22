@@ -24,7 +24,7 @@ function TodaysActivity() {
           orders?.map((order) => (
             <li
               key={order?.id}
-              className="grid grid-cols-[0.5fr_2fr_1fr_0.5fr] items-center gap-3 border-b-[0.1rem] border-b-gray-200 py-4 pr-1 dark:border-b-gray-700"
+              className="grid grid-cols-[0.5fr_2fr_1fr_1.5fr_0.5fr] items-center gap-3 border-b-[0.1rem] border-b-gray-200 py-4 pr-1 dark:border-b-gray-700"
             >
               <OrderStatus status={order?.status} />
               <div className="box-border flex items-center">
@@ -37,9 +37,14 @@ function TodaysActivity() {
                   <p>{order?.profiles?.full_name}</p>
                 </div>
               </div>
-              <p className="">
+              <p>
                 {order?.order_items?.length}{" "}
                 {order?.order_items?.length === 1 ? "item" : "items"}
+              </p>
+              <p
+                className={`w-fit rounded-2xl px-3 py-1 text-xs font-semibold uppercase shadow-md dark:text-gray-200 ${order?.priority ? "bg-green-200 text-green-800 dark:bg-green-800" : "bg-red-200 text-red-800 dark:bg-red-800"}`}
+              >
+                {order?.priority ? "Priority" : "Not priority"}
               </p>
               <button
                 className="buttonDefault justify-center px-3 py-1"

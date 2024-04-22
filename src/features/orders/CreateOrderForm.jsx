@@ -131,7 +131,7 @@ function CreateOrderForm({ onClose }) {
               required: "This field is required",
               pattern: {
                 value:
-                  /^(?:\+\d{1,3})?(?:[ -]?\(?\d{3}\)?[ -]?)?\d{3}(?:[ -]?\d{3}){1,2}(?: ?(?:x|ext)\.? ?\d{1,5})?$/,
+                  /^(?:\+?\d{1,3}[ -]?)?\(?\d{3}\)?[- ]?\d{3}(?:[- ]?\d{3}){1,2}(?: ?(?:x|ext)\.? ?\d{1,5})?$/,
                 message: "Invalid phone number",
               },
             })}

@@ -11,7 +11,12 @@ function CreateNewUserForm() {
   const { inputTypeOne, iconOne } = useToggleVisibility();
 
   function onSubmit(data) {
-    signup({ ...data });
+    signup(
+      { ...data },
+      {
+        onSettled: () => reset(),
+      },
+    );
   }
 
   return (
@@ -27,6 +32,7 @@ function CreateNewUserForm() {
             {...register("full_name", {
               required: "This field is required",
             })}
+            disabled={isCreating}
           />
         </FormRow>
         <FormRow label="Username" error={errors?.username?.message}>
@@ -36,6 +42,7 @@ function CreateNewUserForm() {
             {...register("username", {
               required: "This field is required",
             })}
+            disabled={isCreating}
           />
         </FormRow>
         <FormRow label="Email" error={errors?.email?.message}>
@@ -45,6 +52,7 @@ function CreateNewUserForm() {
             {...register("email", {
               required: "This field is required",
             })}
+            disabled={isCreating}
           />
         </FormRow>
         <FormRow
@@ -58,6 +66,7 @@ function CreateNewUserForm() {
               {...register("password", {
                 required: "This field is required",
               })}
+              disabled={isCreating}
             />
             <span className="absolute right-3 cursor-pointer text-xl">
               {iconOne}

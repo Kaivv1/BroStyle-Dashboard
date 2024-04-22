@@ -39,6 +39,7 @@ function UpdateUserPasswordForm() {
                 {...register("password", {
                   required: "This field is required",
                 })}
+                disabled={isUpdating}
               />
               <span className="absolute right-3 cursor-pointer text-xl">
                 {iconOne}
@@ -58,6 +59,7 @@ function UpdateUserPasswordForm() {
                   validate: (value) =>
                     value === getValues("password") || "Passwords do not match",
                 })}
+                disabled={isUpdating}
               />
               <span className="absolute right-3 cursor-pointer text-xl">
                 {iconTwo}
