@@ -88,12 +88,6 @@ export async function updateUser(obj) {
     .eq("id", obj.id)
     .single();
 
-  if (userData.email !== obj.email) {
-    const { error } = await supabase.auth.updateUser({ email: obj.email });
-
-    if (error) throw new Error("There was a problem updating the user");
-  }
-
   if (obj.avatar && typeof obj.avatar !== "string") {
     if (userData?.avatar && typeof obj.avatar !== "string") {
       const oldAvatarName = getImageName(userData?.avatar);
@@ -126,6 +120,14 @@ export async function updateUser(obj) {
     .eq("id", obj.id)
     .select()
     .single();
+
+  console.log(obj.email);
+
+  if (userData.email !== obj.email) {
+    const { error } = await supabase.auth.updateUser({ email: obj.email });
+    console.log("trying to update email");
+    if (error) throw new Error("There was a problem updating the user");
+  }
 
   if (userDataError || updatingUserError)
     throw new Error("There was a problem updating the user profile");

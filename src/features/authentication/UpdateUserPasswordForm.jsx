@@ -4,14 +4,24 @@ import Heading from "../../ui/Heading";
 import Loader from "../../ui/Loader";
 import { useUpdateUserPassword } from "./useUpdateUserPassword";
 import { useToggleVisibility } from "../../hooks/useToggleVisibility";
+import { useUser } from "./useUser";
+import toast from "react-hot-toast";
 
 function UpdateUserPasswordForm() {
   const { updateUserPassword, isUpdating } = useUpdateUserPassword();
+  const { user: { email } = {} } = useUser();
   const { register, handleSubmit, formState, getValues, reset } = useForm();
   const { errors } = formState;
   const { iconOne, iconTwo, inputTypeOne, inputTypeTwo } =
     useToggleVisibility();
   function onSubmit(data) {
+    if (email === "demo@asd.com") {
+      reset();
+      return toast.error(
+        "Changing the password of the demo acc is not allowed!",
+      );
+    }
+
     const { password } = data;
     updateUserPassword({ password }, { onSettled: () => reset() });
   }
